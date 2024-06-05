@@ -8,6 +8,12 @@ public class Livro {
     private List<String> idiomas;
     private Integer downloads;
 
+    public Livro(DadosLivro livro) {
+        this.titulo = livro.titulo();
+        this.idiomas = livro.idiomas();
+        this.downloads = livro.downloads();
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -38,5 +44,14 @@ public class Livro {
 
     public void setDownloads(Integer downloads) {
         this.downloads = downloads;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro --" +
+                "titulo: " + titulo +
+                ", autor: " + autor +
+                ", idiomas: " + idiomas +
+                ", downloads: " + downloads;
     }
 }

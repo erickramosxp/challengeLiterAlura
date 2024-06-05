@@ -2,6 +2,7 @@ package com.alura.challengeliteralura;
 
 import com.alura.challengeliteralura.model.Dados;
 import com.alura.challengeliteralura.model.DadosAutor;
+import com.alura.challengeliteralura.principal.Principal;
 import com.alura.challengeliteralura.service.ConsumoAPI;
 import com.alura.challengeliteralura.service.ConverteDados;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,19 +23,7 @@ public class ChallengeLiterAluraApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Hello");
-		ConverteDados conversor = new ConverteDados();
-		ConsumoAPI api = new ConsumoAPI();
-		var resultado = api.obterDados("https://gutendex.com/books?search=dom+casmurro");
-		Dados resul = conversor.obterDados(resultado, Dados.class);
-		//		DadosAutor resul = conversor.obterDados(resultado, DadosAutor.class);
-//			ObjectMapper mapper = new ObjectMapper();
-//		DadosAutor resul;
-//		try {
-//			resul = mapper.readValue(resultado, DadosAutor.class);
-//		} catch (JsonProcessingException e) {
-//			throw new RuntimeException(e);
-//		}
-		System.out.println(resul);
+		Principal principal = new Principal();
+		principal.exibirMenu();
 	}
 }

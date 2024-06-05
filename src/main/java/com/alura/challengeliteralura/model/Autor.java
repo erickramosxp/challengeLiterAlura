@@ -1,9 +1,20 @@
 package com.alura.challengeliteralura.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Autor {
     private String nome;
     private Integer anoNascimento;
     private Integer anoFalecimento;
+
+    private List<Livro> livros = new ArrayList<>();
+
+    public Autor(String nome, Integer anoNascimento, Integer anoFalecimento) {
+        this.nome = nome;
+        this.anoNascimento = anoNascimento;
+        this.anoFalecimento = anoFalecimento;
+    }
 
     public String getNome() {
         return nome;
@@ -27,5 +38,22 @@ public class Autor {
 
     public void setAnoFalecimento(Integer anoFalecimento) {
         this.anoFalecimento = anoFalecimento;
+    }
+
+    public List<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(List<Livro> livros) {
+        livros.forEach(l -> l.getAutor().add(this));
+        this.livros = livros;
+    }
+
+    @Override
+    public String toString() {
+        return "Autor -- nome: " + nome +
+                "\nanoNascimento: " + anoNascimento +
+                ", anoFalecimento: " + anoFalecimento +
+                ", livros: " + livros;
     }
 }
