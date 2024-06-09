@@ -1,17 +1,40 @@
 package com.alura.challengeliteralura.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "livros")
 public class Livro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String titulo;
-    private List<Autor> autor;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Autor autor;
+
     private List<String> idiomas;
     private Integer downloads;
+
+    public Livro() {}
 
     public Livro(DadosLivro livro) {
         this.titulo = livro.titulo();
         this.idiomas = livro.idiomas();
         this.downloads = livro.downloads();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -22,11 +45,12 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public List<Autor> getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(List<Autor> autor) {
+
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
@@ -48,10 +72,14 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro --" +
-                "titulo: " + titulo +
-                ", autor: " + autor +
-                ", idiomas: " + idiomas +
-                ", downloads: " + downloads;
+        return """
+                Livro: %s
+                Autor: %s
+                Idiomas: %s
+                Downloads: %d
+                """.formatted(titulo,
+                autor.getNome(),
+                idiomas,
+                downloads);
     }
 }
