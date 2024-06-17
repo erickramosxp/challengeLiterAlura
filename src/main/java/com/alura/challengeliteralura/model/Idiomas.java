@@ -19,7 +19,8 @@ public enum Idiomas {
     public static Idiomas idiomaAbreviado(String idioma) {
         for (Idiomas idiomas : Idiomas.values()) {
             if (idiomas.idioma.equalsIgnoreCase(idioma) ||
-                idiomas.idiomaSAcento.equalsIgnoreCase(idioma)
+                idiomas.idiomaSAcento.equalsIgnoreCase(idioma) ||
+                    idiomas.idiomaAbreviado.equalsIgnoreCase(idioma)
             ) {
                 return (idiomas);
             }

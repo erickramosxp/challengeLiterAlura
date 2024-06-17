@@ -35,6 +35,7 @@ public class Principal {
                 3 - Listar autores registrados
                 4 - Listar autores vivos em determinado ano
                 5 - Listar livros em determinado idioma
+                0 - Sair
                 """;
         while (opcao != 0) {
             System.out.println(menu);
